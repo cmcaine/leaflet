@@ -81,7 +81,12 @@ function mouseHandler(mapId, layerId, group, eventName, extraInfo) {
     let eventInfo = $.extend(
       {
         id: layerId,
-        ".nonce": Math.random()  // force reactivity
+        ".nonce": Math.random(),  // force reactivity
+        modifiers: {
+          ctrl: e.originalEvent.ctrlKey,
+          shift: e.originalEvent.shiftKey,
+          alt: e.originalEvent.altKey
+        }
       },
       group !== null ? {group: group} : null,
       latLng,
